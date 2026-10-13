@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="ExitRamp rebuilds your Kajabi course business on Podia. Review the finished rebuild before you pay." />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet" />
+  <title>ExitRamp — Kajabi to Podia Rebuild</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #f7f8f5;
+      --surface: #ffffff;
+      --surface-muted: #eef2ed;
+      --ink: #17201c;
+      --muted: #53625a;
+      --line: #d8e0da;
+      --dark: #101713;
+      --dark-2: #18231d;
+      --on-dark: #f3f7f3;
+      --on-dark-muted: #b9c8bf;
+      --accent: #38d179;
+      --accent-strong: #1eb865;
+      --accent-ink: #092b1a;
+      --accent-soft: #dff8e8;
+      --warning: #ffd178;
+      --shadow: 0 20px 60px rgba(22, 40, 29, .10);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Newsreader", Georgia, serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #0d120f;
+        --surface: #151d18;
+        --surface-muted: #1b261f;
+        --ink: #eff5f0;
+        --muted: #b2c0b7;
+        --line: #2b3a31;
+        --dark: #080d0a;
+        --dark-2: #121b16;
+        --on-dark: #f3f7f3;
+        --on-dark-muted: #b9c8bf;
+        --accent: #45db82;
+        --accent-strong: #31c973;
+        --accent-ink: #071a10;
+        --accent-soft: #163522;
+        --warning: #ffd178;
+        --shadow: 0 20px 60px rgba(0, 0, 0, .28);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    a { color: inherit; }
+    .container { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .section { padding: 104px 0; }
+    .section-head { max-width: 720px; margin-bottom: 52px; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 14px;
+      color: var(--accent-strong);
+      font-weight: 700;
+      font-size: .83rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .section-label::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { font-family: var(--font-display); letter-spacing: -.025em; line-height: 1.02; }
+    h1 { font-size: clamp(3.25rem, 7vw, 6.6rem); font-weight: 500; max-width: 920px; margin-bottom: 30px; }
+    h2 { font-size: clamp(2.35rem, 4.4vw, 4.35rem); font-weight: 500; margin-bottom: 18px; }
+    h3 { line-height: 1.25; font-size: 1.2rem; }
+    .lead { font-size: clamp(1.08rem, 1.6vw, 1.27rem); color: var(--muted); max-width: 680px; }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border: 0;
+      border-radius: var(--radius-sm);
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { background: var(--accent-strong); transform: translateY(-1px); }
+    .button:focus-visible, .faq-question:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--warning); outline-offset: 3px; }
+    .button svg { width: 18px; height: 18px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--on-dark);
+      background: var(--dark);
+      min-height: 840px;
+      border-radius: 0 0 44px 44px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 72px 72px,
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 72px 72px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -260px;
+      top: 170px;
+      border: 1px solid rgba(69,219,130,.24);
+      border-radius: 50%;
+      box-shadow: 0 0 0 80px rgba(69,219,130,.025), 0 0 0 160px rgba(69,219,130,.02);
+    }
+    .nav {
+      position: relative;
+      z-index: 5;
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      border-bottom: 1px solid rgba(255,255,255,.11);
+    }
+    .wordmark { font-family: var(--font-display); font-size: 1.65rem; font-weight: 600; text-decoration: none; letter-spacing: -.02em; }
+    .wordmark span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links > a:not(.button) { color: var(--on-dark-muted); text-decoration: none; font-size: .94rem; font-weight: 600; }
+    .nav-links > a:not(.button):hover { color: var(--on-dark); }
+    .nav .button { min-height: 44px; padding: 10px 17px; }
+
+    .hero-inner { position: relative; z-index: 2; padding: 98px 0 110px; }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(69,219,130,.28);
+      background: rgba(69,219,130,.08);
+      color: #9df1bc;
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: .84rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    .hero-kicker::before { content: ""; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 5px rgba(69,219,130,.12); }
+    .hero h1 .price { color: var(--accent); white-space: nowrap; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 72px; align-items: end; }
+    .hero-copy { max-width: 760px; }
+    .hero-copy > p { color: var(--on-dark-muted); font-size: clamp(1.1rem, 1.7vw, 1.3rem); max-width: 760px; margin-bottom: 34px; }
+    .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .hero-trust { margin: 0; color: var(--on-dark-muted); font-size: .91rem; display: flex; align-items: center; gap: 9px; }
+    .hero-trust svg { width: 18px; height: 18px; color: var(--accent); flex: 0 0 auto; }
+    .hero-proof { border-top: 1px solid rgba(255,255,255,.15); padding-top: 22px; }
+    .proof-item { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: center; padding: 14px 0; }
+    .proof-number { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid rgba(69,219,130,.45); color: var(--accent); border-radius: 50%; font-size: .8rem; font-weight: 700; }
+    .proof-item strong { display: block; font-size: .94rem; }
+    .proof-item span { color: var(--on-dark-muted); font-size: .82rem; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .step { padding: 42px 42px 46px; border-right: 1px solid var(--line); }
+    .step:first-child { padding-left: 0; }
+    .step:last-child { border-right: 0; padding-right: 0; }
+    .step-num { font-family: var(--font-display); font-size: 2.2rem; color: var(--accent-strong); line-height: 1; margin-bottom: 52px; }
+    .step h3 { font-size: 1.22rem; margin-bottom: 12px; }
+    .step p { color: var(--muted); margin-bottom: 0; }
+
+    .pricing-section { background: var(--surface-muted); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .pricing-head-row { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 48px; }
+    .pricing-head-row .section-head { margin: 0; }
+    .pricing-note { max-width: 320px; color: var(--muted); margin: 0 0 4px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .price-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 34px;
+      min-height: 310px;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+    }
+    .price-card.featured { background: var(--dark); color: var(--on-dark); border-color: var(--dark); box-shadow: var(--shadow); }
+    .price-card.featured::before { content: ""; position: absolute; inset: 0 0 auto; height: 5px; border-radius: var(--radius-md) var(--radius-md) 0 0; background: var(--accent); }
+    .price-topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 27px; }
+    .tier { font-weight: 700; }
+    .spots { padding: 5px 9px; background: var(--accent); color: var(--accent-ink); border-radius: 999px; font-weight: 700; font-size: .72rem; }
+    .price { font-family: var(--font-display); font-size: 4.2rem; line-height: 1; margin: 42px 0 6px; letter-spacing: -.04em; }
+    .price-sub { color: var(--muted); margin-bottom: auto; }
+    .featured .price-sub { color: var(--on-dark-muted); }
+    .price-foot { padding-top: 26px; margin: 28px 0 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .featured .price-foot { border-color: rgba(255,255,255,.15); color: var(--on-dark-muted); }
+
+    .included-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: start; }
+    .included-copy { position: sticky; top: 110px; }
+    .included-copy .lead { margin-bottom: 0; }
+    .checklist { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+    .checklist li { display: grid; grid-template-columns: 38px 1fr; gap: 17px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--line); font-size: 1.08rem; font-weight: 600; }
+    .check-icon { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-strong); margin-top: 1px; }
+    .check-icon svg { width: 15px; height: 15px; stroke-width: 2.5; }
+
+    .care-panel { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: center; color: var(--on-dark); background: var(--dark); padding: 58px 64px; border-radius: var(--radius-lg); }
+    .care-panel h2 { margin: 0; font-size: clamp(2.2rem, 4vw, 3.6rem); }
+    .care-panel p { color: var(--on-dark-muted); font-size: 1.12rem; margin: 0; padding-left: 60px; border-left: 1px solid rgba(255,255,255,.16); }
+
+    .faq-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 100px; align-items: start; }
+    .faq-layout .section-head { position: sticky; top: 110px; margin: 0; }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 25px 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      text-align: left;
+      font-size: 1.08rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .faq-icon { width: 28px; height: 28px; position: relative; flex: 0 0 auto; border: 1px solid var(--line); border-radius: 50%; }
+    .faq-icon::before, .faq-icon::after { content: ""; position: absolute; top: 50%; left: 50%; width: 10px; height: 1.5px; background: currentColor; transform: translate(-50%, -50%); transition: transform .2s ease; }
+    .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .faq-question[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) rotate(0); }
+    .faq-answer { overflow: hidden; }
+    .faq-answer[hidden] { display: none; }
+    .faq-answer p { color: var(--muted); padding: 0 52px 25px 0; margin: 0; }
+    .faq-answer a { color: var(--accent-strong); font-weight: 700; text-underline-offset: 3px; overflow-wrap: anywhere; }
+
+    .final-cta { padding: 96px 0; background: var(--accent); color: var(--accent-ink); }
+    .final-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 50px; }
+    .final-cta h2 { max-width: 760px; margin: 0; font-size: clamp(2.6rem, 5vw, 5rem); }
+    .final-cta .button { background: var(--dark); color: var(--on-dark); min-width: 210px; }
+    .final-cta .button:hover { background: #263129; }
+
+    .signup-section { padding: 112px 0; }
+    .signup-shell { display: grid; grid-template-columns: .75fr 1.25fr; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
+    .signup-copy { background: var(--dark); color: var(--on-dark); padding: 58px 52px; }
+    .signup-copy .section-label { color: var(--accent); }
+    .signup-copy h2 { font-size: clamp(2.5rem, 4vw, 4rem); }
+    .signup-copy p { color: var(--on-dark-muted); margin-bottom: 34px; }
+    .signup-points { list-style: none; margin: 0; padding: 0; }
+    .signup-points li { display: flex; gap: 12px; align-items: center; padding: 10px 0; color: var(--on-dark-muted); font-size: .95rem; }
+    .signup-points li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: 0 0 auto; }
+    .signup-form-wrap { padding: 58px 60px; }
+    .field { margin-bottom: 22px; }
+    label { display: block; font-weight: 700; font-size: .9rem; margin-bottom: 8px; }
+    input {
+      width: 100%;
+      height: 54px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--page);
+      color: var(--ink);
+    }
+    input::placeholder { color: var(--muted); opacity: .7; }
+    .signup-form-wrap .button { width: 100%; margin-top: 6px; }
+    .signup-form-wrap .button:disabled { cursor: wait; opacity: .72; transform: none; }
+    .form-status { min-height: 1.5em; margin: 13px 0 0; color: #b63c36; font-size: .88rem; font-weight: 600; text-align: center; }
+    .form-status:empty { min-height: 0; margin: 0; }
+    .form-confirmation { padding: 24px; background: var(--accent-soft); color: var(--ink); border-radius: var(--radius-sm); font-size: 1.08rem; font-weight: 700; }
+
+    @media (prefers-color-scheme: dark) {
+      .form-status { color: #ff9b94; }
+    }
+
+    footer { border-top: 1px solid var(--line); padding: 30px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; color: var(--muted); font-size: .88rem; }
+    .footer-inner p { margin: 0; }
+    .footer-inner a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
+
+    @media (max-width: 900px) {
+      .section { padding: 82px 0; }
+      .hero { min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; gap: 58px; }
+      .hero-proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .proof-item { display: block; }
+      .proof-number { margin-bottom: 12px; }
+      .steps { grid-template-columns: 1fr; }
+      .step, .step:first-child, .step:last-child { padding: 30px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .step:last-child { border-bottom: 0; }
+      .step-num { margin-bottom: 20px; }
+      .pricing-head-row { align-items: start; flex-direction: column; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .price-card { min-height: 260px; }
+      .included-layout, .faq-layout { grid-template-columns: 1fr; gap: 50px; }
+      .included-copy, .faq-layout .section-head { position: static; }
+      .care-panel { grid-template-columns: 1fr; padding: 48px; gap: 30px; }
+      .care-panel p { padding: 28px 0 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.16); }
+      .final-cta-inner { align-items: flex-start; flex-direction: column; }
+      .signup-shell { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 660px) {
+      .container { width: min(100% - 28px, 1160px); }
+      .section { padding: 68px 0; }
+      .section-head { margin-bottom: 38px; }
+      .hero { border-radius: 0 0 26px 26px; }
+      .nav { height: auto; min-height: 112px; gap: 12px; padding: 14px 0 12px; flex-wrap: wrap; }
+      .nav-links { width: 100%; justify-content: flex-start; gap: 24px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.11); }
+      .nav-links > a:not(.button) { display: inline; font-size: .78rem; }
+      .nav .button { position: absolute; top: 14px; right: 0; font-size: .78rem; min-height: 40px; padding: 9px 12px; }
+      .wordmark { font-size: 1.45rem; }
+      .hero-inner { padding: 62px 0 78px; }
+      h1 { font-size: clamp(3rem, 14vw, 4.2rem); }
+      .hero h1 .price { white-space: normal; }
+      .hero-actions { align-items: flex-start; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .hero-proof { grid-template-columns: 1fr; gap: 0; }
+      .proof-item { display: grid; }
+      .proof-number { margin-bottom: 0; }
+      .pricing-grid { gap: 14px; }
+      .price-card { padding: 28px 24px; }
+      .price { font-size: 3.7rem; margin-top: 34px; }
+      .included-layout { gap: 36px; }
+      .care-panel { padding: 36px 28px; border-radius: var(--radius-md); }
+      .faq-layout { gap: 28px; }
+      .faq-answer p { padding-right: 0; }
+      .final-cta { padding: 70px 0; }
+      .final-cta .button { width: 100%; }
+      .signup-section { padding: 70px 0; }
+      .signup-shell { border-radius: var(--radius-md); }
+      .signup-copy, .signup-form-wrap { padding: 38px 24px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="wordmark" href="#top" aria-label="ExitRamp home">Exit<span>Ramp</span></a>
+      <div class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="button" href="#signup">Start my free rebuild</a>
+      </div>
+    </nav>
+
+    <div class="hero-inner container" id="top">
+      <div class="hero-kicker">Pay after approval</div>
+      <h1>Your $5,000–$10,000 Kajabi rebuild — done for <span class="price">$997.</span></h1>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p>ExitRamp moves your entire course business off Kajabi and rebuilds it on Podia. We do the work first on a private staging server. You review it, approve it, and only then pay. No payment upfront. No sales calls.</p>
+          <div class="hero-actions">
+            <a class="button" href="#signup">
+              Start my free rebuild
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <p class="hero-trust">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+              You pay nothing until you approve the finished rebuild.
+            </p>
+          </div>
+        </div>
+        <aside class="hero-proof" aria-label="Rebuild process summary">
+          <div class="proof-item"><span class="proof-number">01</span><div><strong>Private staging</strong><span>Your site stays live</span></div></div>
+          <div class="proof-item"><span class="proof-number">02</span><div><strong>Your approval</strong><span>Review everything first</span></div></div>
+          <div class="proof-item"><span class="proof-number">03</span><div><strong>Then payment</strong><span>No upfront cost</span></div></div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">How it works</p>
+          <h2>From Kajabi to Podia, without the usual disruption.</h2>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-num">01</div>
+            <h3>Sign up &amp; grant access</h3>
+            <p>Tell us your Kajabi site and give us access. It takes five minutes.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">02</div>
+            <h3>We rebuild on staging</h3>
+            <p>We migrate your courses, offers, contacts, and automations and rebuild your site on a private staging server — matched to your brand.</p>
+          </article>
+          <article class="step">
+            <div class="step-num">03</div>
+            <h3>Approve → pay → cutover</h3>
+            <p>Review the finished rebuild. Approve it, pay, and we cut over your live site. Don't love it? You pay nothing and your live site is untouched.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing-section" id="pricing">
+      <div class="container">
+        <div class="pricing-head-row">
+          <div class="section-head">
+            <p class="section-label">Pricing</p>
+            <h2>The same full rebuild. Earlier clients pay less.</h2>
+          </div>
+          <p class="pricing-note">One-time. You pay only after you approve the finished rebuild.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card featured">
+            <div class="price-topline">
+              <span class="tier">Founding</span>
+              <!-- PLACEHOLDER SCARCITY COUNT: replace with the verified live count before launch. -->
+              <span class="spots">5 spots left</span>
+            </div>
+            <div class="price">$997</div>
+            <p class="price-sub">First 5 clients only</p>
+            <p class="price-foot">One-time. You pay only after you approve the finished rebuild.</p>
+          </article>
+          <article class="price-card">
+            <div class="price-topline"><span class="tier">Early</span></div>
+            <div class="price">$1,499</div>
+            <p class="price-sub">Next 10 clients</p>
+            <p class="price-foot">One-time. You pay only after you approve the finished rebuild.</p>
+          </article>
+          <article class="price-card">
+            <div class="price-topline"><span class="tier">Standard</span></div>
+            <div class="price">$2,000</div>
+            <p class="price-sub">Standard</p>
+            <p class="price-foot">One-time. You pay only after you approve the finished rebuild.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="included">
+      <div class="container included-layout">
+        <div class="included-copy">
+          <p class="section-label">What's included</p>
+          <h2>Your course business, rebuilt—not just copied.</h2>
+        </div>
+        <ul class="checklist" aria-label="What's included">
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><span>Full course content — modules, lessons, videos</span></li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><span>Offers and pricing rebuilt</span></li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><span>Email automations rebuilt</span></li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><span>Contacts migrated</span></li>
+          <li><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span><span>Design matched to your brand</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="care-title">
+      <div class="container">
+        <div class="care-panel">
+          <h2 id="care-title">Ongoing care, if you want it</h2>
+          <p>Optional $97–$297/mo care plan after 30 days free. Your rate is locked for 24 months — after that, increases are capped at $10/mo in any year.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container faq-layout">
+        <div class="section-head">
+          <p class="section-label">FAQ</p>
+          <h2>Before you make the move.</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-1"><span>What transfers?</span><span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-answer" id="faq-1"><p>Your course content, modules, lessons, videos, offers, pricing, contacts, and email automations — all rebuilt on your new platform, design matched to your brand.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-2"><span>How long does it take?</span><span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-answer" id="faq-2" hidden><p>Most rebuilds are done within two weeks of you granting access.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-3"><span>What if I don't like the rebuild?</span><span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-answer" id="faq-3" hidden><p>You pay nothing. We shut down the staging server and your live Kajabi site is completely untouched.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4"><span>Do I need to talk to anyone?</span><span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-answer" id="faq-4" hidden><p>No. The whole process is self-serve — sign up, grant access, review your staging site, approve. If you'd rather talk it through, you can book a 15-minute intro call here: <a href="https://calendly.com/sam-tryexitramp/exitramp-intro-chat" target="_blank" rel="noopener noreferrer">https://calendly.com/sam-tryexitramp/exitramp-intro-chat</a></p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-5"><span>What about my monthly costs?</span><span class="faq-icon" aria-hidden="true"></span></button>
+            <div class="faq-answer" id="faq-5" hidden><p>Honest answer: monthly software cost is roughly a wash versus Kajabi. The savings are the rebuild itself — $997 instead of $5,000–$10,000 — and never getting hit with another un-grandfathered price hike.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="final-cta-title">
+      <div class="container final-cta-inner">
+        <h2 id="final-cta-title">Your rebuild costs you nothing until you approve it.</h2>
+        <a class="button" href="#signup">Start my free rebuild</a>
+      </div>
+    </section>
+
+    <section class="signup-section" id="signup">
+      <div class="container signup-shell">
+        <div class="signup-copy">
+          <p class="section-label">Get started</p>
+          <h2>Start your migration</h2>
+          <p>Tell us where your course lives. We'll take a look and reply within one business day — no call required.</p>
+          <ul class="signup-points">
+            <li>No payment upfront</li>
+            <li>No sales call required</li>
+            <li>Your live site stays untouched</li>
+          </ul>
+        </div>
+        <div class="signup-form-wrap">
+          <form id="rebuild-form">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="site">Kajabi site URL</label>
+              <input id="site" name="site" type="url" inputmode="url" autocomplete="url" placeholder="https://yourcourse.mykajabi.com" />
+            </div>
+            <button class="button" type="submit">Request my migration</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="form-confirmation" id="form-confirmation" role="status" aria-live="polite" hidden>
+            Got it — we'll reply within one business day.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© 2026 ExitRamp. All rights reserved.</p>
+      <a href="https://calendly.com/sam-tryexitramp/exitramp-intro-chat" target="_blank" rel="noopener noreferrer">Prefer to talk? Book a 15-minute intro call.</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const INTAKE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxT2DBl_Td1OS1FURAtPijvb594hgfXB9PE4VbohtXMEqqydVmYTvGr2diSW-GDPp_NGw/exec'; // Paste the Google Apps Script web app URL here
+
+      var questions = document.querySelectorAll('.faq-question');
+      questions.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var panel = document.getElementById(button.getAttribute('aria-controls'));
+          var willOpen = button.getAttribute('aria-expanded') !== 'true';
+          questions.forEach(function (other) {
+            var otherPanel = document.getElementById(other.getAttribute('aria-controls'));
+            other.setAttribute('aria-expanded', 'false');
+            otherPanel.hidden = true;
+          });
+          button.setAttribute('aria-expanded', String(willOpen));
+          panel.hidden = !willOpen;
+        });
+      });
+
+      var form = document.getElementById('rebuild-form');
+      var status = document.getElementById('form-status');
+      var confirmation = document.getElementById('form-confirmation');
+      var submitButton = form.querySelector('button[type="submit"]');
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        status.textContent = '';
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        if (!INTAKE_ENDPOINT) {
+          status.textContent = "Form isn't connected yet — email sam@tryexitramp.com directly.";
+          return;
+        }
+
+        var payload = {
+          name: document.getElementById('name').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          site: document.getElementById('site').value.trim()
+        };
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending…';
+
+        try {
+          var response = await fetch(INTAKE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          var result = await response.json();
+          if (!response.ok || !result || result.ok !== true) {
+            throw new Error('Intake request failed');
+          }
+          form.hidden = true;
+          confirmation.hidden = false;
+          confirmation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } catch (error) {
+          status.textContent = 'Something went wrong — email sam@tryexitramp.com directly.';
+          submitButton.disabled = false;
+          submitButton.textContent = 'Request my migration';
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
