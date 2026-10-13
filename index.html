@@ -110,7 +110,7 @@
       transition: background .2s ease, transform .2s ease;
     }
     .button:hover { background: var(--accent-strong); transform: translateY(-1px); }
-    .button:focus-visible, .faq-question:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--warning); outline-offset: 3px; }
+    .button:focus-visible, .faq-question:focus-visible, .nav-toggle:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--warning); outline-offset: 3px; }
     .button svg { width: 18px; height: 18px; }
 
     .hero {
@@ -186,6 +186,13 @@
     .proof-number { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid rgba(69,219,130,.45); color: var(--accent); border-radius: 50%; font-size: .8rem; font-weight: 700; }
     .proof-item strong { display: block; font-size: .94rem; }
     .proof-item span { color: var(--on-dark-muted); font-size: .82rem; }
+
+    .founder-note { padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .founder-note p { margin: 0; max-width: 860px; color: var(--muted); font-size: 1.05rem; }
+    .founder-note strong { color: var(--ink); }
+
+    .nav-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; background: transparent; border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius-sm); color: var(--on-dark); cursor: pointer; flex: 0 0 auto; }
+    .nav-toggle svg { width: 22px; height: 22px; }
 
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .step { padding: 42px 42px 46px; border-right: 1px solid var(--line); }
@@ -382,14 +389,16 @@
       .section { padding: 68px 0; }
       .section-head { margin-bottom: 38px; }
       .hero { border-radius: 0 0 26px 26px; }
-      .nav { height: auto; min-height: 112px; gap: 12px; padding: 14px 0 12px; flex-wrap: wrap; }
-      .nav-links { width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 14px 24px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.11); }
+      .nav { height: 72px; min-height: 0; gap: 12px; flex-wrap: nowrap; }
+      .nav-toggle { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 2px; padding: 12px 4px 18px; background: var(--dark-2); border-bottom: 1px solid rgba(255,255,255,.11); }
+      .nav-links.open { display: flex; }
+      .nav-links > a:not(.button) { padding: 11px 6px; font-size: .95rem; }
+      .nav-links .button { margin-top: 10px; }
       .demo-body { padding: 24px 20px; }
       .demo-course { grid-template-columns: 1fr; }
       .demo-resume { grid-row: auto; grid-column: 1; justify-self: start; margin-top: 8px; }
       .cost-panel { padding: 28px 24px; }
-      .nav-links > a:not(.button) { display: inline; font-size: .78rem; }
-      .nav .button { position: absolute; top: 14px; right: 0; font-size: .78rem; min-height: 40px; padding: 9px 12px; }
       .wordmark { font-size: 1.45rem; }
       .hero-inner { padding: 62px 0 78px; }
       h1 { font-size: clamp(3rem, 14vw, 4.2rem); }
@@ -424,22 +433,25 @@
   <header class="hero">
     <nav class="nav container" aria-label="Primary navigation">
       <a class="wordmark" href="#top" aria-label="ExitRamp home">Exit<span>Ramp</span></a>
-      <div class="nav-links">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
         <a href="#how-it-works">How it works</a>
         <a href="#experience">Student experience</a>
         <a href="#pricing">Pricing</a>
         <a href="#costs">Costs</a>
         <a href="#faq">FAQ</a>
-        <a class="button" href="#signup">Request my migration review</a>
+        <a class="button" href="#signup">Request review</a>
       </div>
     </nav>
 
     <div class="hero-inner container" id="top">
-      <div class="hero-kicker">Pay after approval</div>
+      <div class="hero-kicker">Pay after you approve the finished site</div>
       <h1>Your $5,000–$10,000 Kajabi rebuild — done for <span class="price">$997.</span></h1>
       <div class="hero-grid">
         <div class="hero-copy">
-          <p>ExitRamp moves your entire course business off Kajabi and rebuilds it on Podia. We do the work first on a private staging site. You review it, approve it, and only then pay. No payment upfront. No sales call required.</p>
+          <p>It starts with your Kajabi URL: we reply within one business day with exactly what will and won't move. Say go, and we rebuild your entire course business on a private Podia staging site — your Kajabi site stays live the whole time. Approve the finished site and pay $997, or walk away and pay nothing.</p>
           <div class="hero-actions">
             <a class="button" href="#signup">
               Request my migration review
@@ -452,13 +464,19 @@
           </div>
         </div>
         <aside class="hero-proof" aria-label="Rebuild process summary">
-          <div class="proof-item"><span class="proof-number">01</span><div><strong>Private staging</strong><span>Your site stays live</span></div></div>
-          <div class="proof-item"><span class="proof-number">02</span><div><strong>Your approval</strong><span>Review everything first</span></div></div>
-          <div class="proof-item"><span class="proof-number">03</span><div><strong>Then payment</strong><span>No upfront cost</span></div></div>
+          <div class="proof-item"><span class="proof-number">01</span><div><strong>Migration review</strong><span>Reply within one business day</span></div></div>
+          <div class="proof-item"><span class="proof-number">02</span><div><strong>You say go, we rebuild</strong><span>Private staging — Kajabi stays live</span></div></div>
+          <div class="proof-item"><span class="proof-number">03</span><div><strong>Approve the finished site</strong><span>Pay $997 — or walk away, pay nothing</span></div></div>
         </aside>
       </div>
     </div>
   </header>
+
+  <div class="founder-note">
+    <div class="container">
+      <p><strong>I'm Sam, the founder of ExitRamp — and I do the rebuilds myself.</strong> These are my first five founding rebuilds. The private staging site is the proof: you judge the finished work before you pay anything.</p>
+    </div>
+  </div>
 
   <main>
     <section class="section" id="how-it-works">
@@ -471,17 +489,17 @@
           <article class="step">
             <div class="step-num">01</div>
             <h3>Request your review</h3>
-            <p>Send us your name, email, and Kajabi site URL. We review your setup and reply within one business day — no call required.</p>
+            <p>Send us your name, email, and Kajabi site URL. Within one business day, we reply with exactly what will and won't move — no call required, and nothing is built yet.</p>
           </article>
           <article class="step">
             <div class="step-num">02</div>
-            <h3>We rebuild on Podia staging</h3>
-            <p>We migrate your courses, quizzes, drip schedules, student progress, offers, contacts, and automations and rebuild your business on Podia, on a private staging site — matched to your brand.</p>
+            <h3>You say go, we rebuild</h3>
+            <p>Only once you say go do we start: your courses, quizzes, drip schedules, student progress, offers, contacts, and automations rebuilt on Podia, on a private staging site matched to your brand. Your Kajabi site stays live the whole time.</p>
           </article>
           <article class="step">
             <div class="step-num">03</div>
-            <h3>Approve → pay → cutover</h3>
-            <p>Review the finished rebuild. Approve it, pay, and we cut over your live site. Don't love it? You pay nothing and your live site is untouched.</p>
+            <h3>Approve → pay $997 → cutover</h3>
+            <p>Review the finished rebuild. Approve it, pay $997, and we cut over your live site. Don't love it? Walk away, pay nothing, and your live site is untouched.</p>
           </article>
         </div>
       </div>
@@ -500,10 +518,10 @@
       <div class="container experience-layout">
         <div>
           <p class="section-label">The student experience</p>
-          <h2>One login. Everything your students bought, right where they left it.</h2>
-          <p class="lead">On Podia, your courses, community, and membership live behind a single student login — no juggling links, no second account, no starting over.</p>
+          <h2>Their progress comes with them. Nobody starts over.</h2>
+          <p class="lead">Your students' progress and drip schedules move with them: completed lessons stay completed, drip timing stays on schedule, and everyone picks up exactly where they left off.</p>
           <ul class="experience-points">
-            <li><strong>Progress and drip come with them</strong><span>Completed lessons stay completed and drip schedules keep their timing, so nobody restarts a course mid-way through your move.</span></li>
+            <li><strong>One login for everything</strong><span>Courses, community, and membership behind a single student login on Podia — no juggling links, no second account.</span></li>
             <li><strong>Pick up on any device</strong><span>A lesson started on a laptop resumes in the same place on a phone — in the browser or the app.</span></li>
             <li><strong>Everything under your brand</strong><span>Your domain, your design, your checkout. Students stay inside your business instead of bouncing between tools.</span></li>
           </ul>
@@ -581,23 +599,22 @@
           <article class="price-card featured">
             <div class="price-topline">
               <span class="tier">Founding</span>
-              <!-- PLACEHOLDER SCARCITY COUNT: replace with the verified live count before launch. -->
-              <span class="spots">5 spots left</span>
+              <span class="spots">Founding cohort</span>
             </div>
             <div class="price">$997</div>
-            <p class="price-sub">First 5 clients only</p>
+            <p class="price-sub">Five founding rebuilds at this price</p>
             <p class="price-foot">One-time. You pay only after you approve the finished rebuild.</p>
           </article>
           <article class="price-card">
             <div class="price-topline"><span class="tier">Early</span></div>
             <div class="price">$1,499</div>
-            <p class="price-sub">Next 10 clients</p>
+            <p class="price-sub">The next ten rebuilds, after the founding five</p>
             <p class="price-foot">One-time. You pay only after you approve the finished rebuild.</p>
           </article>
           <article class="price-card">
             <div class="price-topline"><span class="tier">Standard</span></div>
             <div class="price">$2,000</div>
-            <p class="price-sub">Standard</p>
+            <p class="price-sub">Standard rate</p>
             <p class="price-foot">One-time. You pay only after you approve the finished rebuild.</p>
           </article>
         </div>
@@ -635,27 +652,23 @@
             <h3>Your Podia subscription</h3>
             <p class="cost-who">Paid directly to Podia. We don't mark it up and we don't bill it.</p>
             <div class="plan-row">
-              <span><span class="plan-name">Mover</span><span class="plan-detail">A lean starting plan</span></span>
+              <span><span class="plan-name">Mover</span><span class="plan-detail">Takes 5% of every sale — about $400 on a $7,997 course · 100 email subscribers included</span></span>
               <span class="plan-price">$49<small>/mo</small></span>
             </div>
             <div class="plan-row">
-              <span><span class="plan-name">Shaker</span><span class="plan-detail">0% transaction fees</span></span>
+              <span><span class="plan-name">Shaker</span><span class="plan-detail">0% transaction fees · 500 email subscribers included</span></span>
               <span class="plan-price">$99<small>/mo</small></span>
             </div>
             <div class="plan-row">
-              <span><span class="plan-name">Earthquaker</span><span class="plan-detail">Larger catalogs and teams</span></span>
+              <span><span class="plan-name">Earthquaker</span><span class="plan-detail">0% transaction fees · 1,000 email subscribers included</span></span>
               <span class="plan-price">$179<small>/mo</small></span>
             </div>
-            <p class="cost-includes">Every plan includes your website, course hosting, community, email marketing, and checkout — the whole stack in one subscription, billed month to month.</p>
+            <p class="cost-includes">Every plan includes your website, course hosting, community, and checkout, billed month to month. Email marketing is included up to the subscriber cap on your plan — past the cap, you pay Podia for a larger list.</p>
           </article>
           <article class="cost-panel dark">
             <h3>ExitRamp care plan — optional</h3>
-            <p class="cost-who">Paid to ExitRamp, only if you want it. Your site runs fine without it.</p>
-            <div class="plan-row">
-              <span><span class="plan-name">Care plan</span><span class="plan-detail">First 30 days free</span></span>
-              <span class="plan-price">$97–$297<small>/mo</small></span>
-            </div>
-            <p class="cost-includes">Ongoing help after launch, if you'd rather hand off the day-to-day than touch the tech. Your rate is locked for 24 months; after that, increases are capped at $10/mo in any year.</p>
+            <p class="cost-who">Paid to ExitRamp, only if you want it.</p>
+            <p class="cost-includes">Ongoing help after launch, if you'd rather hand off the day-to-day than touch the tech. The first 30 days after cutover are free. Your site runs fine without it.</p>
           </article>
         </div>
         <p class="costs-footnote">Separate from both: the one-time rebuild itself — $997 at the founding rate — paid once, only after you approve the finished staging site.</p>
@@ -687,7 +700,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4"><span>Do I need to talk to anyone?</span><span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-answer" id="faq-4" hidden><p>No. The whole process is self-serve — sign up, grant access, review your staging site, approve. If you'd rather talk it through, you can book a 15-minute intro call here: <a href="https://calendly.com/sam-tryexitramp/exitramp-intro-chat" target="_blank" rel="noopener noreferrer">https://calendly.com/sam-tryexitramp/exitramp-intro-chat</a></p></div>
+            <div class="faq-answer" id="faq-4" hidden><p>No. The whole process is async: request your review, say go once you've seen what will and won't move, review the finished staging site, then approve and pay. If you'd rather talk it through, you can book a 15-minute intro call here: <a href="https://calendly.com/sam-tryexitramp/exitramp-intro-chat" target="_blank" rel="noopener noreferrer">https://calendly.com/sam-tryexitramp/exitramp-intro-chat</a></p></div>
           </div>
           <div class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-5"><span>What about my monthly costs?</span><span class="faq-icon" aria-hidden="true"></span></button>
@@ -699,7 +712,7 @@
 
     <section class="final-cta" aria-labelledby="final-cta-title">
       <div class="container final-cta-inner">
-        <h2 id="final-cta-title">Your rebuild costs you nothing until you approve it.</h2>
+        <h2 id="final-cta-title">Your rebuild costs you nothing until you approve the finished site.</h2>
         <a class="button" href="#signup">Request my migration review</a>
       </div>
     </section>
@@ -709,11 +722,11 @@
         <div class="signup-copy">
           <p class="section-label">Get started</p>
           <h2>Request your migration review</h2>
-          <p>Tell us where your course lives. We'll review your setup and reply within one business day — no call required, and nothing is built or billed until you approve it.</p>
+          <p>Tell us where your course lives. We'll review your setup and reply within one business day with exactly what will and won't move. Nothing is built until you say go, and nothing is billed until you approve the finished rebuild.</p>
           <ul class="signup-points">
-            <li>No payment upfront</li>
-            <li>No sales call required</li>
-            <li>Your live site stays untouched</li>
+            <li>Reply within one business day — what will and won't move</li>
+            <li>Nothing built until you say go</li>
+            <li>Pay only after you approve the finished site</li>
           </ul>
         </div>
         <div class="signup-form-wrap">
@@ -734,7 +747,7 @@
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
           <div class="form-confirmation" id="form-confirmation" role="status" aria-live="polite" hidden>
-            Got it — we'll reply within one business day.
+            Got it — we'll reply within one business day with what will and won't move. Nothing is built until you say go.
           </div>
         </div>
       </div>
@@ -751,6 +764,21 @@
   <script>
     (function () {
       const INTAKE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxT2DBl_Td1OS1FURAtPijvb594hgfXB9PE4VbohtXMEqqydVmYTvGr2diSW-GDPp_NGw/exec'; // Paste the Google Apps Script web app URL here
+
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.getElementById('nav-links');
+      navToggle.addEventListener('click', function () {
+        var open = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+      navLinks.addEventListener('click', function (event) {
+        if (event.target.closest('a')) {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.setAttribute('aria-label', 'Open menu');
+        }
+      });
 
       var questions = document.querySelectorAll('.faq-question');
       questions.forEach(function (button) {
