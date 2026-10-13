@@ -227,6 +227,11 @@
     .featured .price-sub { color: var(--on-dark-muted); }
     .price-foot { padding-top: 26px; margin: 28px 0 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
     .featured .price-foot { border-color: rgba(255,255,255,.15); color: var(--on-dark-muted); }
+    .door-strip { margin-top: 18px; display: flex; align-items: center; gap: 26px; background: var(--dark); color: var(--on-dark); border-radius: var(--radius-md); padding: 26px 34px; }
+    .door-strip-price { font-family: var(--font-display); font-size: 1.7rem; line-height: 1.15; letter-spacing: -.02em; white-space: nowrap; }
+    .door-strip-price span { color: var(--accent); }
+    .door-strip p { margin: 0; color: var(--on-dark-muted); }
+    .door-strip p strong { color: var(--on-dark); }
 
     .included-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: start; }
     .included-copy { position: sticky; top: 110px; }
@@ -409,6 +414,8 @@
       .proof-item { display: grid; }
       .proof-number { margin-bottom: 0; }
       .pricing-grid { gap: 14px; }
+      .door-strip { flex-direction: column; align-items: flex-start; gap: 10px; padding: 24px; }
+      .door-strip-price { white-space: normal; }
       .price-card { padding: 28px 24px; }
       .price { font-size: 3.7rem; margin-top: 34px; }
       .included-layout { gap: 36px; }
@@ -451,7 +458,7 @@
       <h1>Your $5,000–$10,000 Kajabi rebuild — done for <span class="price">$997.</span></h1>
       <div class="hero-grid">
         <div class="hero-copy">
-          <p>It starts with your Kajabi URL: we reply within one business day with exactly what will and won't move. Say go, and we rebuild your entire course business on a private Podia staging site — your Kajabi site stays live the whole time. Approve the finished site and pay $997, or walk away and pay nothing.</p>
+          <p>It starts with your Kajabi URL: we reply within one business day with exactly what will and won't move. Say go, and we rebuild your entire course business on a private Podia staging site — your Kajabi site stays live the whole time. Approve the finished site and choose how to pay — $997 once, or $199/mo on the plan — or walk away and pay nothing.</p>
           <div class="hero-actions">
             <a class="button" href="#signup">
               Request my migration review
@@ -466,7 +473,7 @@
         <aside class="hero-proof" aria-label="Rebuild process summary">
           <div class="proof-item"><span class="proof-number">01</span><div><strong>Migration review</strong><span>Reply within one business day</span></div></div>
           <div class="proof-item"><span class="proof-number">02</span><div><strong>You say go, we rebuild</strong><span>Private staging — Kajabi stays live</span></div></div>
-          <div class="proof-item"><span class="proof-number">03</span><div><strong>Approve the finished site</strong><span>Pay $997 — or walk away, pay nothing</span></div></div>
+          <div class="proof-item"><span class="proof-number">03</span><div><strong>Approve the finished site</strong><span>$997 once, or $199/mo on the plan — or walk away, pay nothing</span></div></div>
         </aside>
       </div>
     </div>
@@ -498,8 +505,8 @@
           </article>
           <article class="step">
             <div class="step-num">03</div>
-            <h3>Approve → pay $997 → cutover</h3>
-            <p>Review the finished rebuild. Approve it, pay $997, and we cut over your live site. Don't love it? Walk away, pay nothing, and your live site is untouched.</p>
+            <h3>Approve → choose how to pay → cutover</h3>
+            <p>Review the finished rebuild. Approve it, choose how to pay — $997 once, or $199/mo on the plan — and we cut over your live site. Don't love it? Walk away, pay nothing, and your live site is untouched.</p>
           </article>
         </div>
       </div>
@@ -566,8 +573,8 @@
       <div class="container">
         <div class="section-head">
           <p class="section-label">Why switch</p>
-          <h2>If the monthly bill barely changes, why move?</h2>
-          <p class="lead">Honest math first: the saving is the rebuild — $997 instead of $5,000–$10,000 — not the monthly bill. What changes every month is how your business runs.</p>
+          <h2>The monthly bill drops too — and someone runs the tech.</h2>
+          <p class="lead">Honest math first: on Kajabi Growth ($249/mo), Podia Shaker plus our care plan is $178/mo — $71/mo back, with someone running the tech for you. The bigger saving is still one-time: the rebuild, $997 instead of $5,000–$10,000. What also changes every month is how your business runs.</p>
         </div>
         <div class="why-grid">
           <article class="why-item">
@@ -618,6 +625,10 @@
             <p class="price-foot">One-time. You pay only after you approve the finished rebuild.</p>
           </article>
         </div>
+        <div class="door-strip">
+          <div class="door-strip-price">Or: <span>$0 upfront</span>, $199/mo</div>
+          <p><strong>The second way to pay for the rebuild.</strong> $199/month for 24 months, care plan included. You agree when you approve the finished staging site — and if you leave early, the unpaid rebuild balance comes due.</p>
+        </div>
       </div>
     </section>
 
@@ -667,11 +678,27 @@
           </article>
           <article class="cost-panel dark">
             <h3>ExitRamp care plan — optional</h3>
-            <p class="cost-who">Paid to ExitRamp, only if you want it.</p>
-            <p class="cost-includes">Ongoing help after launch, if you'd rather hand off the day-to-day than touch the tech. The first 30 days after cutover are free. Your site runs fine without it.</p>
+            <p class="cost-who">Paid to ExitRamp, only if you want it. One plan — you never touch the tech again.</p>
+            <div class="plan-row">
+              <span><span class="plan-name">Care plan</span><span class="plan-detail">First 30 days after cutover free · price locked for 24 months · cancel anytime</span></span>
+              <span class="plan-price">$79<small>/mo</small></span>
+            </div>
+            <div class="plan-row">
+              <span><span class="plan-name">Student access problems, fixed for you</span><span class="plan-detail">Logins and lost progress — handled, not queued with Podia support</span></span>
+            </div>
+            <div class="plan-row">
+              <span><span class="plan-name">Small fixes &amp; settings changes</span><span class="plan-detail">Prices, coupons, links, formatting</span></span>
+            </div>
+            <div class="plan-row">
+              <span><span class="plan-name">New lessons built in for you</span><span class="plan-detail">Up to 5 a month — you send the files, we build them in</span></span>
+            </div>
+            <div class="plan-row">
+              <span><span class="plan-name">Checkout tested before a launch</span><span class="plan-detail">Tested end to end before your launch goes live</span></span>
+            </div>
+            <p class="cost-includes">Podia Shaker ($99) + this plan ($79) = $178/mo total — $71/mo less than Kajabi Growth ($249), with someone running it for you. Your site runs fine without it.</p>
           </article>
         </div>
-        <p class="costs-footnote">Separate from both: the one-time rebuild itself — $997 at the founding rate — paid once, only after you approve the finished staging site.</p>
+        <p class="costs-footnote">Separate from both: the rebuild itself. Pay $997 once at the founding rate, only after you approve the finished staging site — or $0 upfront and $199/mo for 24 months with the care plan included, agreed at that same approval.</p>
       </div>
     </section>
 
@@ -704,7 +731,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-5"><span>What about my monthly costs?</span><span class="faq-icon" aria-hidden="true"></span></button>
-            <div class="faq-answer" id="faq-5" hidden><p>Honest answer: monthly software cost is roughly a wash versus Kajabi. The savings are the rebuild itself — $997 instead of $5,000–$10,000 — and never getting hit with another un-grandfathered price hike. What your Podia subscription includes, plan by plan, is broken down under <a href="#costs">ongoing costs</a>.</p></div>
+            <div class="faq-answer" id="faq-5" hidden><p>Podia Shaker is $99/mo. Add the optional $79/mo care plan and the total is $178/mo — versus $249/mo for Kajabi Growth, that's $71/mo less, and no more un-grandfathered price hikes. On Kajabi Basic ($179/mo)? Podia Mover plus the care plan comes to $128/mo. What your Podia subscription includes, plan by plan, is broken down under <a href="#costs">ongoing costs</a>.</p></div>
           </div>
         </div>
       </div>
